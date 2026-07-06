@@ -51,15 +51,14 @@ export const deletePost = async (req, res) => {
 };
 
 export const findPostByTags = async (req, res) => {
-    const post = await service.findPostsByTags(req.params.values)
-    //не совсем поняла как обозначить values в params
+    const post = await service.findPostsByTags(req.query.tags)
     if (post) {
         return res.status(200).json(post);
     }
 };
 
 export const findPostByPeriod = async (req, res) => {
-    const post = await service.findPostByPeriod(req.params.dateFrom, req.params.dateTo)
+    const post = await service.findPostByPeriod(req.query.dateFrom, req.query.dateTo)
     if (post) {
         return res.status(200).json(post);
     }

@@ -10,5 +10,5 @@ router.get('forum/posts/author/:user', controller.findPostsByAuthor);
 router.patch('forum/post/:id', controller.addComment);
 router.delete('forum/post/:id', controller.deletePost);
 router.get('forum/posts/tags/:tags', controller.findPostByTags);
-router.get('forum/posts/period/:dateFrom&dateTo', controller.findPostByTags); //не уверена
+router.get('forum/posts/period/:dateFrom/:dateTo', controller.findPostByPeriod);
 router.patch('forum/post/:id', controller.updatePost);
