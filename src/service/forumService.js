@@ -1,4 +1,4 @@
-export const addPost =async (title, content, tags) => {
+export const addPost =async (author, data) => {
     //TODO: add new post with title, content, tags
 };
 
