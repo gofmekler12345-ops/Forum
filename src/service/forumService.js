@@ -1,35 +1,65 @@
-export const addPost =async (author, data) => {
-    //TODO: add new post with title, content, tags
+import * as repository from '../repository/forumRepository.js';
+
+export const addPost = async (author, data) => {
+    const tags = [...new Set(data.tags)]
+    return await repository.createPost({...data, author});
 };
 
 export const findPostById = async (id) => {
-    //TODO: find post by id
+    const post = await repository.findPostById(id)
+    if (!post) {
+        throw new Error(`Post with id = ${id} not found`);
+    }
+    return post;
+
 };
 
 export const addLike = async (id) => {
-    //TODO: add like to post by id
+    const post = await repository.addLike(id)
+    if (!post) {
+        throw new Error(`Post with id = ${id} not found`);
+    }
+    return post;
 };
 
 export const findPostsByAuthor = async (author) => {
-    //TODO: find posts by author
+    const post = await repository.findPostsByAuthor(author)
+    if (!post) {
+        throw new Error(`Post with author = ${author} not found`);
+    }
+    return post;
 };
 
 export const addComment = async (id, comment) => {
-    //TODO: add comment to post by id
+    const post = await repository.addComment(id, comment)
+    if (!post) {
+        throw new Error(`Post with id = ${id} not found`);
+    }
+    return post;
 }
 
+//запуталась с комментариями
+
 export const deletePost = async (id) => {
-    //TODO: delete post by id
+    const post = await repository.deletePost(id);
+    if (!post) {
+        throw new Error(`Post with id = ${id} not found`);
+    }
+    return post;
 };
 
 export const findPostsByTags = async (tags) => {
-    //TODO: find posts by tags
+    return await repository.findPostsByTags(tags);
 };
 
 export const findPostByPeriod = async (dateFrom, dateTo) => {
-    //TODO: find posts by period
+    return repository.findPostByPeriod(dateFrom, dateTo);
 }
 
-export const updatePost= async (postId, title, content, tags) => {
-    //TODO: update post by id
+export const updatePost = async (id, data) => {
+    const post = await repository.updatePost(id, data);
+    if (!post) {
+        throw new Error(`Post with id = ${id} not found`);
+    }
+    return post;
 };
