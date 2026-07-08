@@ -13,7 +13,7 @@ export const deletePost = async (id) => Post.findByIdAndDelete(id).exec();
 
 export const addLike = async (id) => Post.findByIdAndUpdate(id, {$inc: {likes: 1}}).exec();
 
-export const findPostsByAuthor = async (author) => Post.findOne({author}).exec();
+export const findPostsByAuthor = async (author) => Post.find({author}).exec();
 
 export const addComment = async (id, comment) => Post.findByIdAndUpdate(id, {$push: {comments: comment}}, {new: true}).exec();
 
