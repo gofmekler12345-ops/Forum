@@ -27,4 +27,6 @@ export const findPostByPeriod = async (dateFrom, dateTo) =>
         }
     }).exec();
 
-export const updatePost = async (id, data) => Post.findByIdAndUpdate(id, {$set: data}, {new: true}).exec();
+export const updatePost = async (id, data) => {
+    const tags = 
+    Post.findByIdAndUpdate(id, {$addToSet: data}, {new: true}).exec();}

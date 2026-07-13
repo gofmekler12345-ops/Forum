@@ -30,15 +30,14 @@ export const findPostsByAuthor = async (author) => {
     return post;
 };
 
-export const addComment = async (id, comment) => {
+export const addComment = async (id, commenter, content) => {
+    const comment={user:commenter, message:content}
     const post = await repository.addComment(id, comment)
     if (!post) {
         throw new Error(`Post with id = ${id} not found`);
     }
     return post;
 }
-
-//запуталась с комментариями
 
 export const deletePost = async (id) => {
     const post = await repository.deletePost(id);
@@ -48,7 +47,8 @@ export const deletePost = async (id) => {
     return post;
 };
 
-export const findPostsByTags = async (tags) => {
+export const findPostsByTags = async (tagsString) => {
+    const tags = tagsString.split(',').map(tag => tag.trim());
     return await repository.findPostsByTags(tags);
 };
 

@@ -2,12 +2,16 @@ import express from 'express';
 import mongoose from "mongoose";
 import postRoutes from './routes/forumRoutes.js';
 import config from './configuretion/config.js';
+import errorMiddleware from "./middlewares/error.middleware.js";
+import errorHandler from "./middlewares/error.middleware.js";
 
 const app = express();
 
 app.use(express.json());
 
 app.use('/forum', postRoutes)
+
+app.use(errorHandler);
 
 app.use((req, res) => res.status(404).type('text/plain; charset=utf-8').send('Not Found'));
 
