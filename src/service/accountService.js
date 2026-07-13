@@ -22,7 +22,7 @@ export const deleteRole = (user, role) => {
     //TODO delete role
 }
 
-export const changePassword = (user, oldPassword, newPassword) => {
+export const changePassword = (user, newPassword) => {
     //TODO change password
 };
 

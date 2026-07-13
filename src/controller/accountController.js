@@ -33,7 +33,7 @@ export const updateUser = async (req, res) => {
 
 export const addRole = async (req, res) => {
     try {
-        const user = await service.addRole(req.params.user, req.body.role);
+        const user = await service.addRole(req.params.user, req.params.role);
         return res.json(user);
     } catch (e) {
         return e;
@@ -42,7 +42,7 @@ export const addRole = async (req, res) => {
 
 export const deleteRole = async (req, res) => {
     try {
-        const user = await service.deleteRole(req.params.user, req.body.role);
+        const user = await service.deleteRole(req.params.user, req.params.role);
         return res.json(user);
     } catch (e) {
         return e;
