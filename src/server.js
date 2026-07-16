@@ -4,12 +4,14 @@ import postRoutes from './routes/forumRoutes.js';
 import config from './configuretion/config.js';
 import errorMiddleware from "./middlewares/error.middleware.js";
 import errorHandler from "./middlewares/error.middleware.js";
+import accountRoutes from "./routes/accountRoutes.js";
 
 const app = express();
 
 app.use(express.json());
 
 app.use('/forum', postRoutes)
+app.use('/account', accountRoutes)
 
 app.use(errorHandler);
 
