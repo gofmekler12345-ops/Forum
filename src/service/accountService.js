@@ -1,5 +1,6 @@
 import * as repository from '../repository/accountRepository.js';
-import {addUser} from "../repository/accountRepository.js";
+import bcrypt from "bcrypt";
+import userAccount from "../models/userAccount.js";
 
 export const register = async (user) => {
     try {
@@ -52,8 +53,12 @@ export const changeRoles = async (login, role, isAddRole) => {
     return userAccount;
 }
 
-export const changePassword = async (user, newPassword) => {
-    //TODO change password
+export const changePassword = async (login, newPassword) => {
+    const userAccount = await repository.changePassword(login, newPassword);
+    if (!userAccount) {
+        throw new Error(`User with login '${login}' not found`);
+    }
+    return userAccount;
 };
 
 export const getUser = async (login) => {
